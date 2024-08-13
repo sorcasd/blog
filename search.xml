@@ -164,7 +164,7 @@
       <link href="/2024/08/13/badminton-m-s3/"/>
       <url>/2024/08/13/badminton-m-s3/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="三：mybatis-flex代码生成器"><a href="#三：mybatis-flex代码生成器" class="headerlink" title="三：mybatis-flex代码生成器"></a>三：mybatis-flex代码生成器</h1><ol><li><p>使用mybatis-flex的代码生成器快速生成代码和结构</p><p>使用的Maven依赖如下</p><p>&#96;<dependency><br><groupId>com.mybatis-flex</groupId><br><artifactId>mybatis-flex-spring-boot3-starter</artifactId><br><version>1.9.3</version></p></dependency><dependency>    <groupId>com.mybatis-flex</groupId>    <artifactId>mybatis-flex-processor</artifactId>    <version>1.9.3</version>    <scope>provided</scope></dependency>`</li><li><p>在pom.xml同级目录下创建mybatis-flex.config文件并配置</p></li><li></li></ol>]]></content>
       
       
       <categories>
@@ -217,9 +217,9 @@
             
             <tag> java </tag>
             
-            <tag> mybatis-flex </tag>
-            
             <tag> mybatis </tag>
+            
+            <tag> mybatis-flex </tag>
             
             <tag> orm </tag>
             
