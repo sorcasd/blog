@@ -409,7 +409,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    238
+                    248
                 </div>
                 
 
@@ -439,7 +439,7 @@
 <p>2.优化了控制层部分代码，使得单个功能减少对数据库的重复访问</p>
 <p>3.为通用接口添加了读取excel文件并将其导入数据库的接口模块，使用了<a target="_blank" rel="noopener" href="https://doc.hutool.cn/pages/ExcelUtil/#%E4%BB%8B%E7%BB%8D">hutool</a></p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(&quot;/readExcel&quot;)</span><br><span class="line">    @ApiOperation(&quot;读存excel文件&quot;)</span><br><span class="line">    public Result readExcel(MultipartFile file)&#123;</span><br><span class="line">        if (Validator.isEmpty(file))&#123;</span><br><span class="line">            log.error(&quot;上传文件为空&quot;);</span><br><span class="line">            return Result.error(&quot;上传文件为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        log.info(&quot;读取Excel文件:&#123;&#125;&quot;,file);</span><br><span class="line">        try &#123;</span><br><span class="line">            ExcelReader reader = ExcelUtil.getReader(file.getInputStream());</span><br><span class="line">            List&lt;User&gt; users = reader.readAll(User.class);</span><br><span class="line">            int num=userService.addUser(users);</span><br><span class="line">            if (num != 0)&#123;</span><br><span class="line">                log.info(&quot;成功导入&#123;&#125;条数据&quot;,num);</span><br><span class="line">                return Result.success(&quot;成功导入0&quot;+num+&quot;条数据&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            log.error(&quot;读取Excel文件失败&quot;,e);</span><br><span class="line">        &#125;</span><br><span class="line">    return Result.error(&quot;error&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
+<p>项目地址：<a target="_blank" rel="noopener" href="https://gitee.com/SuperFishingKingdom/badminton.git">https://gitee.com/SuperFishingKingdom/badminton.git</a></p>
 
                 
             </div>
