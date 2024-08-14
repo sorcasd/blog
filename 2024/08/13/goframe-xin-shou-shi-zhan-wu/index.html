@@ -5,7 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="GoFrame新手实战(五), Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="引言：本次主要实现分页查询功能，因昨天写这个功能时遇到了困难，因此放到今天好好研究一下。
+
+首先，官方文档中的orm是有对分页查询操作的。只不过要用到链式操作，因此先学习一下链式操作。
+模型创建12g.Model(&amp;quot;article">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +351,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                                <span class="chip bg-color">分页查询</span>
+                            </a>
+                        
+                            <a href="/tags/GoFrame/">
+                                <span class="chip bg-color">GoFrame</span>
+                            </a>
+                        
+                            <a href="/tags/Go/">
+                                <span class="chip bg-color">Go</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                GoFrame学习笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +393,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    828
                 </div>
                 
 
@@ -398,7 +422,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="引言："><a href="#引言：" class="headerlink" title="引言："></a>引言：</h3><p>本次主要实现分页查询功能，因昨天写这个功能时遇到了困难，因此放到今天好好研究一下。</p>
+<hr>
+<p>首先，官方文档中的orm是有对分页查询操作的。只不过要用到链式操作，因此先学习一下链式操作。</p>
+<h3 id="模型创建"><a href="#模型创建" class="headerlink" title="模型创建"></a>模型创建</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g.Model(&quot;article&quot;)</span><br><span class="line">m:=g.Model(&quot;article&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>这里涉及到一个概念，叫链式安全</p>
+<p>文档中对链式安全的定义是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">链式安全只是模型操作的两种方式区别：一种会修改当前model对象（不安全，默认），一种不会（安全）但是模型属性修改/条件叠加需要使用赋值操作，仅此而已。</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>使用gf gen dao产生的dao对象默认是链式安全的，因此这里不多赘述，想了解的可以<a target="_blank" rel="noopener" href="https://goframe.org/pages/viewpage.action?pageId=1114699">看这里</a>。</p>
+<p>接下来是查询操作</p>
+<h3 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h3><p>先从简单的where学起：</p>
+<p>where+string，条件参数使用字符串和预处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 查询多条记录并使用Limit分页</span><br><span class="line">// SELECT * FROM user WHERE uid&gt;1 LIMIT 0,10</span><br><span class="line">g.Model(&quot;user&quot;).Where(&quot;uid &gt; ?&quot;, 1).Limit(0, 10).All()</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>用ScanAndCount实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// GetList 获取实例的用户列表.</span><br><span class="line">func (s sUserInfo) GetList(ctx context.Context, in model.UserInfoGetListInput) (items []entity.UserInfo, total int, err error) &#123;</span><br><span class="line">	items = make([]entity.UserInfo, 0)</span><br><span class="line">	err = dao.UserInfo.Ctx(ctx).OmitEmpty().</span><br><span class="line">		Where(do.UserInfo&#123;</span><br><span class="line">			ResourceId: in.ResourceId,</span><br><span class="line">			Status:     in.Statuses,</span><br><span class="line">		&#125;).</span><br><span class="line">		Order(in.OrderBy, in.OrderDirection).</span><br><span class="line">		Limit(in.Offset, in.Limit).</span><br><span class="line">		ScanAndCount(&amp;items, &amp;total, true)</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>然而官方文档中貌似只有这个业务逻辑实现的代码</p>
+<p>其中的Order和Limit都是现在不需要的，所以直接删了就行，将里面的部分内容换成自己项目的数据，修改后的代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">func (s sArticle) GetList(ctx context.Context, in model.ArticleGetListInput) (items []entity.Article, size int, err error) &#123;</span><br><span class="line">	items = make([]entity.Article, 0)</span><br><span class="line">	size = in.Size</span><br><span class="line">	err = dao.Article.Ctx(ctx).OmitEmpty().</span><br><span class="line">		Where(&quot;delete_time is null&quot;).</span><br><span class="line">		ScanAndCount(&amp;items, &amp;size, true)</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>之后修改api中对应的文件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ArticleGetListReq <span class="keyword">struct</span> &#123;</span><br><span class="line">	g.Meta <span class="string">`path:&quot;/article/get-list&quot; tags:&quot;Article&quot; method:&quot;get&quot; summary:&quot;获取文章列表&quot;`</span></span><br><span class="line">	Page   <span class="type">int</span> <span class="string">`p:&quot;page&quot; v:&quot;min:0#请输入正确的页数&quot; dc:&quot;页数&quot;`</span></span><br><span class="line">	Size   <span class="type">int</span> <span class="string">`p:&quot;size&quot; v:&quot;min:1#请输入正确的页数&quot; dc:&quot;页数&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> ArticleGetListRes <span class="keyword">struct</span> &#123;</span><br><span class="line">	List []entity.Article <span class="string">`json:&quot;list&quot;`</span></span><br><span class="line">	Size <span class="type">int</span></span><br><span class="line">	Page <span class="type">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>再去修改控制层对应的文件</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *ControllerV1)</span></span> ArticleGetList(ctx context.Context, req *v1.ArticleGetListReq) (res *v1.ArticleGetListRes, err <span class="type">error</span>) &#123;</span><br><span class="line">	res = &amp;v1.ArticleGetListRes&#123;&#125;</span><br><span class="line">	res.List, res.Size, err = service.Article().GetList(ctx, model.ArticleGetListInput&#123;</span><br><span class="line">		Page: req.Page,</span><br><span class="line">        Size: req.Size</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>在修改调试该文件的内容时，遇到了空指针的问题，百度之后加上了</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res = &amp;v1.ArticleGetListRes&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>这句<br> 语句的作用是显式初始化res为&amp;v1.ArticleGetListRes{}。这样即使service.Article().GetList方法失败，也不会因为尝试解引用nil指针而引发运行时错误。</p>
+<p>最后改一下model中的结构体</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ArticleGetListInput <span class="keyword">struct</span> &#123;</span><br><span class="line">	Page <span class="type">int</span></span><br><span class="line">	Size <span class="type">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>运行测试一下看看</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/112a7821d9fd43628bb7f76241a7e7cc.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>虽然好像还有点小问题，但是能跑就行，之后的学习总能解决的</p>
+<hr>
+<p>这样一来crud就大致上完成了一遍<br>可惜的是，通过后来对博客框架的学习，发现搭建博客甚至不需要后端编写代码</p>
+
                 
             </div>
             <hr/>
@@ -461,7 +534,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                                    <span class="chip bg-color">分页查询</span>
+                                </a>
+                            
+                                <a href="/tags/GoFrame/">
+                                    <span class="chip bg-color">GoFrame</span>
+                                </a>
+                            
+                                <a href="/tags/Go/">
+                                    <span class="chip bg-color">Go</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -831,13 +916,33 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                        <span class="chip bg-color">分页查询</span>
+                    </a>
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -869,11 +974,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1066,7 +1187,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

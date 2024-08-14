@@ -8,7 +8,8 @@
     <meta name="description" content="三：mybatis-flex代码生成器
 使用mybatis-flex的代码生成器快速生成代码和结构
 使用的Maven依赖如下
-&amp;#96;com.mybatis-flexmybatis-flex-spring-boot3-starter1.9">
+&amp;lt;dependency&amp;gt;  
+​    &amp;lt;groupId&amp;gt;com.mybatis-flex">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -397,14 +398,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    72
+                    743
                 </div>
                 
 
@@ -429,18 +430,35 @@
                 <h1 id="三：mybatis-flex代码生成器"><a href="#三：mybatis-flex代码生成器" class="headerlink" title="三：mybatis-flex代码生成器"></a>三：mybatis-flex代码生成器</h1><ol>
 <li><p>使用mybatis-flex的代码生成器快速生成代码和结构</p>
 <p>使用的Maven依赖如下</p>
-<p>&#96;<dependency><br><groupId>com.mybatis-flex</groupId><br><artifactId>mybatis-flex-spring-boot3-starter</artifactId><br><version>1.9.3</version></p>
-</dependency>
-<dependency>
-    <groupId>com.mybatis-flex</groupId>
-    <artifactId>mybatis-flex-processor</artifactId>
-    <version>1.9.3</version>
-    <scope>provided</scope>
-</dependency>`
+<p><code>&lt;dependency&gt;</code>  </p>
+<p>​    <code>&lt;groupId&gt;com.mybatis-flex&lt;/groupId&gt;</code><br>​    <code>&lt;artifactId&gt;mybatis-flex-spring-boot3-starter&lt;/artifactId&gt;</code>  </p>
+<p>​    <code>&lt;version&gt;1.9.3&lt;/version&gt;</code>  </p>
+<p><code>&lt;/dependency&gt;</code>  </p>
+<p><code>&lt;dependency&gt;</code>  </p>
+<p>​    <code>&lt;groupId&gt;com.mybatis-flex&lt;/groupId&gt;</code>  </p>
+<p><code>    &lt;artifactId&gt;mybatis-flex-processor&lt;/artifactId&gt;</code>  </p>
+<p><code>    &lt;version&gt;1.9.3&lt;/version&gt;</code>  </p>
+<p><code>    &lt;scope&gt;provided&lt;/scope&gt;</code>  </p>
+<p><code>&lt;/dependency&gt;</code>  </p>
 </li>
 <li><p>在pom.xml同级目录下创建mybatis-flex.config文件并配置</p>
+<p><code>#开启 Mapper 自动生成</code>  </p>
+<p><code>processor.mapper.generateEnable = true</code>  </p>
+<p><code># 开启 @Mapper 注解</code>  </p>
+<p><code>processor.mapper.annotation = true</code>  </p>
 </li>
-<li></li>
+<li><p>在启动项同级目录下创建mybatis-flex代码生成器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">public class Codegen &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //配置数据源</span><br><span class="line">        HikariDataSource dataSource = new HikariDataSource();</span><br><span class="line">        dataSource.setJdbcUrl(&quot;jdbc:mysql://127.0.0.1:3306/badminton?characterEncoding=utf-8&quot;);</span><br><span class="line">        dataSource.setUsername(&quot;root&quot;);</span><br><span class="line">        dataSource.setPassword(&quot;yujiawei&quot;);</span><br><span class="line"></span><br><span class="line">        //创建配置内容，两种风格都可以。</span><br><span class="line">//        GlobalConfig globalConfig = createGlobalConfigUseStyle1();</span><br><span class="line">        GlobalConfig globalConfig = createGlobalConfigUseStyle2();</span><br><span class="line"></span><br><span class="line">        //通过 datasource 和 globalConfig 创建代码生成器</span><br><span class="line">        Generator generator = new Generator(dataSource, globalConfig);</span><br><span class="line"></span><br><span class="line">        //生成代码</span><br><span class="line">        generator.generate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static GlobalConfig createGlobalConfigUseStyle1() &#123;</span><br><span class="line">        //创建配置内容</span><br><span class="line">        GlobalConfig globalConfig = new GlobalConfig();</span><br><span class="line"></span><br><span class="line">        //设置根包</span><br><span class="line">        globalConfig.setBasePackage(&quot;com.badminton.demo&quot;);</span><br><span class="line"></span><br><span class="line">        //设置表前缀和只生成哪些表</span><br><span class="line">//        globalConfig.setTablePrefix(&quot;tb_&quot;);</span><br><span class="line">//        globalConfig.setGenerateTable(&quot;tb_account&quot;, &quot;tb_account_session&quot;);</span><br><span class="line"></span><br><span class="line">        //设置生成 entity 并启用 Lombok</span><br><span class="line">        globalConfig.setEntityGenerateEnable(true);</span><br><span class="line">        globalConfig.setEntityWithLombok(true);</span><br><span class="line">        //设置项目的JDK版本，项目的JDK为14及以上时建议设置该项，小于14则可以不设置</span><br><span class="line">//        globalConfig.setJdkVersion(17);</span><br><span class="line"></span><br><span class="line">        //设置生成 mapper</span><br><span class="line">        globalConfig.setMapperGenerateEnable(true);</span><br><span class="line"></span><br><span class="line">        //可以单独配置某个列</span><br><span class="line">        ColumnConfig columnConfig = new ColumnConfig();</span><br><span class="line">        columnConfig.setColumnName(&quot;tenant_id&quot;);</span><br><span class="line">        columnConfig.setLarge(true);</span><br><span class="line">        columnConfig.setVersion(true);</span><br><span class="line">        globalConfig.setColumnConfig(&quot;tb_account&quot;, columnConfig);</span><br><span class="line"></span><br><span class="line">        return globalConfig;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static GlobalConfig createGlobalConfigUseStyle2() &#123;</span><br><span class="line">        //创建配置内容</span><br><span class="line">        GlobalConfig globalConfig = new GlobalConfig();</span><br><span class="line"></span><br><span class="line">        //设置根包</span><br><span class="line">        globalConfig.getPackageConfig()</span><br><span class="line">                .setBasePackage(&quot;com.badminton.demo&quot;);</span><br><span class="line"></span><br><span class="line">        //设置表前缀和只生成哪些表，setGenerateTable 未配置时，生成所有表</span><br><span class="line">//        globalConfig.getStrategyConfig()</span><br><span class="line">//                .setTablePrefix(&quot;tb_&quot;)</span><br><span class="line">//                .setGenerateTable(&quot;tb_account&quot;, &quot;tb_account_session&quot;);</span><br><span class="line"></span><br><span class="line">        //设置生成 entity 并启用 Lombok</span><br><span class="line">        globalConfig.enableEntity()</span><br><span class="line">                .setWithLombok(true)</span><br><span class="line">                .setJdkVersion(17);</span><br><span class="line"></span><br><span class="line">        //设置生成 mapper</span><br><span class="line">        globalConfig.enableMapper();</span><br><span class="line">        // 开启 Entity 的生成</span><br><span class="line">        globalConfig.enableEntity();</span><br><span class="line">        //开启service的生成</span><br><span class="line">        globalConfig.enableService();</span><br><span class="line">        //开启serviceImpl的生成</span><br><span class="line">        globalConfig.enableServiceImpl();</span><br><span class="line">        //开启controller的生成</span><br><span class="line">        globalConfig.enableController();</span><br><span class="line">// 关闭 Entity 的生成</span><br><span class="line">//        globalConfig.disableEntity();</span><br><span class="line">        //可以单独配置某个列</span><br><span class="line">        /*</span><br><span class="line">        ColumnConfig columnConfig = new ColumnConfig();</span><br><span class="line">        columnConfig.setColumnName(&quot;tenant_id&quot;);</span><br><span class="line">        columnConfig.setLarge(true);</span><br><span class="line">        columnConfig.setVersion(true);</span><br><span class="line">        globalConfig.getStrategyConfig()</span><br><span class="line">                .setColumnConfig(&quot;tb_account&quot;, columnConfig);</span><br><span class="line">                */</span><br><span class="line"></span><br><span class="line">        return globalConfig;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>部分参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/sgx1825192/article/details/134116973">mybatis-flex官方文档</a></p>
+</li>
+<li><p>运行以上代码，代码生成器自动创建了所需要的文件例如controller，entity，mapper与service</p>
+<p><img src="https://sky-take-out-super-fish.oss-cn-beijing.aliyuncs.com/tuchuang/202408140900676.png" alt="图片"></p>
+</li>
+<li><p>选择一个表crud</p>
+</li>
+<li><p>为返回结果规定一个统一的返回值{code,message,data}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Result</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer code; <span class="comment">//编码：0成功，1和其它数字为失败</span></span><br><span class="line">    <span class="keyword">private</span> String msg; <span class="comment">//错误信息</span></span><br><span class="line">    <span class="keyword">private</span> T data; <span class="comment">//数据</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Result&lt;T&gt; <span class="title function_">success</span><span class="params">()</span> &#123;</span><br><span class="line">        Result&lt;T&gt; result = <span class="keyword">new</span> <span class="title class_">Result</span>&lt;T&gt;();</span><br><span class="line">        result.code = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Result&lt;T&gt; <span class="title function_">success</span><span class="params">(T object)</span> &#123;</span><br><span class="line">        Result&lt;T&gt; result = <span class="keyword">new</span> <span class="title class_">Result</span>&lt;T&gt;();</span><br><span class="line">        result.data = object;</span><br><span class="line">        result.code = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Result&lt;T&gt; <span class="title function_">error</span><span class="params">(String msg)</span> &#123;</span><br><span class="line">        <span class="type">Result</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Result</span>();</span><br><span class="line">        result.msg = msg;</span><br><span class="line">        result.code = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
                 
@@ -890,11 +908,43 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/mybatis-flex/">
+                        <span class="chip bg-color">mybatis-flex</span>
+                    </a>
+                    
+                    <a href="/tags/mybatis/">
+                        <span class="chip bg-color">mybatis</span>
+                    </a>
+                    
+                    <a href="/tags/hutool/">
+                        <span class="chip bg-color">hutool</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                        <span class="chip bg-color">分页查询</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -960,12 +1010,12 @@
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/mybatis/">
-                        <span class="chip bg-color">mybatis</span>
-                    </a>
-                    
                     <a href="/tags/mybatis-flex/">
                         <span class="chip bg-color">mybatis-flex</span>
+                    </a>
+                    
+                    <a href="/tags/mybatis/">
+                        <span class="chip bg-color">mybatis</span>
                     </a>
                     
                     <a href="/tags/orm/">
@@ -1168,7 +1218,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

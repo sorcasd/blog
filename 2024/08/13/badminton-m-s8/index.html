@@ -5,7 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Badminton-m-s8, Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="
+上传文件到阿里云oss
+
+yml文件中配置
+123456数据库名:  alioss:    endpoint:     access-key-id:     access-key-secret:     bucket-name: 
+
+在u">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +354,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/alioss/">
+                                <span class="chip bg-color">alioss</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/">
+                                <span class="chip bg-color">上传文件</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +392,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    543
                 </div>
                 
 
@@ -398,7 +421,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <ol>
+<li><p>上传文件到阿里云oss</p>
+</li>
+<li><p>yml文件中配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">数据库名:</span><br><span class="line">  alioss:</span><br><span class="line">    endpoint: </span><br><span class="line">    access-key-id: </span><br><span class="line">    access-key-secret: </span><br><span class="line">    bucket-name: </span><br></pre></td></tr></table></figure>
+
+<p>在utils中创建AliOssUtil</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">@Slf4j</span><br><span class="line">public class AliOssUtil &#123;</span><br><span class="line"></span><br><span class="line">    private String endpoint;</span><br><span class="line">    private String accessKeyId;</span><br><span class="line">    private String accessKeySecret;</span><br><span class="line">    private String bucketName;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     *</span><br><span class="line">     * @param bytes</span><br><span class="line">     * @param objectName</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public String upload(byte[] bytes, String objectName) &#123;</span><br><span class="line"></span><br><span class="line">        // 创建OSSClient实例。</span><br><span class="line">        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            // 创建PutObject请求。</span><br><span class="line">            ossClient.putObject(bucketName, objectName, new ByteArrayInputStream(bytes));</span><br><span class="line">        &#125; catch (OSSException oe) &#123;</span><br><span class="line">            System.out.println(&quot;Caught an OSSException, which means your request made it to OSS, &quot;</span><br><span class="line">                    + &quot;but was rejected with an error response for some reason.&quot;);</span><br><span class="line">            System.out.println(&quot;Error Message:&quot; + oe.getErrorMessage());</span><br><span class="line">            System.out.println(&quot;Error Code:&quot; + oe.getErrorCode());</span><br><span class="line">            System.out.println(&quot;Request ID:&quot; + oe.getRequestId());</span><br><span class="line">            System.out.println(&quot;Host ID:&quot; + oe.getHostId());</span><br><span class="line">        &#125; catch (ClientException ce) &#123;</span><br><span class="line">            System.out.println(&quot;Caught an ClientException, which means the client encountered &quot;</span><br><span class="line">                    + &quot;a serious internal problem while trying to communicate with OSS, &quot;</span><br><span class="line">                    + &quot;such as not being able to access the network.&quot;);</span><br><span class="line">            System.out.println(&quot;Error Message:&quot; + ce.getMessage());</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            if (ossClient != null) &#123;</span><br><span class="line">                ossClient.shutdown();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //文件访问路径规则 https://BucketName.Endpoint/ObjectName</span><br><span class="line">        StringBuilder stringBuilder = new StringBuilder(&quot;https://&quot;);</span><br><span class="line">        stringBuilder</span><br><span class="line">                .append(bucketName)</span><br><span class="line">                .append(&quot;.&quot;)</span><br><span class="line">                .append(endpoint)</span><br><span class="line">                .append(&quot;/&quot;)</span><br><span class="line">                .append(objectName);</span><br><span class="line"></span><br><span class="line">        log.info(&quot;文件上传到:&#123;&#125;&quot;, stringBuilder.toString());</span><br><span class="line"></span><br><span class="line">        return stringBuilder.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考自阿里云官方文档</p>
+<p>创建properties类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">@ConfigurationProperties(prefix = &quot;badminton.alioss&quot;)</span><br><span class="line">@Data</span><br><span class="line">public class AliOssProperties &#123;</span><br><span class="line"></span><br><span class="line">    private String endpoint;</span><br><span class="line">    private String accessKeyId;</span><br><span class="line">    private String accessKeySecret;</span><br><span class="line">    private String bucketName;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在控制层创建CommonController控制文件的上传</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/admin/common&quot;)</span><br><span class="line">@Api(tags = &quot;通用接口&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private AliOssUtil aliOssUtil;</span><br><span class="line"></span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    @ApiOperation(&quot;上传图片&quot;)</span><br><span class="line">    public Result&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line">        if (Validator.isEmpty(file))&#123;</span><br><span class="line">            log.error(&quot;上传文件为空&quot;);</span><br><span class="line">            return Result.error(&quot;上传文件为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        log.info(&quot;上传文件:&#123;&#125;&quot;,file);</span><br><span class="line">        try &#123;</span><br><span class="line">            //原始文件名</span><br><span class="line">            String originalFilename = file.getOriginalFilename();</span><br><span class="line">            //截取原始文件名的后缀</span><br><span class="line">            String extension = originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;));</span><br><span class="line">            //用UUID覆盖原文件名</span><br><span class="line">            String objectName =IdUtil.simpleUUID()+extension;</span><br><span class="line">            //文件请求路径</span><br><span class="line">            String filePath=aliOssUtil.upload(file.getBytes(),objectName);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            log.error(&quot;上传文件失败&quot;,e);</span><br><span class="line">        &#125;</span><br><span class="line">        return Result.error(&quot;error&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>设置类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@Slf4j</span><br><span class="line">public class OssConfiguration &#123;</span><br><span class="line">    @ConditionalOnMissingBean</span><br><span class="line">    @Bean</span><br><span class="line">    public AliOssUtil aliOssUtil(AliOssProperties aliOssProperties)&#123;</span><br><span class="line">        log.info(&quot;开始创建阿里云文件上传工具类对象&quot;,aliOssProperties);</span><br><span class="line">        return new AliOssUtil(aliOssProperties.getEndpoint(),</span><br><span class="line">                aliOssProperties.getAccessKeyId(),</span><br><span class="line">                aliOssProperties.getAccessKeySecret(),</span><br><span class="line">                aliOssProperties.getBucketName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -461,7 +503,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/alioss/">
+                                    <span class="chip bg-color">alioss</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/">
+                                    <span class="chip bg-color">上传文件</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +880,39 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vue3/">
+                        <span class="chip bg-color">vue3</span>
+                    </a>
+                    
+                    <a href="/tags/ElementPlus/">
+                        <span class="chip bg-color">ElementPlus</span>
+                    </a>
+                    
+                    <a href="/tags/create-vue/">
+                        <span class="chip bg-color">create-vue</span>
+                    </a>
+                    
+                    <a href="/tags/excel%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/">
+                        <span class="chip bg-color">excel文件读取</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +945,31 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%83%A8%E7%BD%B2jar%E5%8C%85/">
+                        <span class="chip bg-color">部署jar包</span>
+                    </a>
+                    
+                    <a href="/tags/supervisor/">
+                        <span class="chip bg-color">supervisor</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1162,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

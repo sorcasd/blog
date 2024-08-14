@@ -628,6 +628,11 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                引言：本次主要实现分页查询功能，因昨天写这个功能时遇到了困难，因此放到今天好好研究一下。
+
+首先，官方文档中的orm是有对分页查询操作的。只不过要用到链式操作，因此先学习一下链式操作。
+模型创建12g.Model(&quot;article
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -635,13 +640,33 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                            <span class="chip bg-color">分页查询</span>
+                        </a>
+                        
+                        <a href="/tags/GoFrame/">
+                            <span class="chip bg-color">GoFrame</span>
+                        </a>
+                        
+                        <a href="/tags/Go/">
+                            <span class="chip bg-color">Go</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -663,6 +688,10 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                引言：在完成了对管理员登录功能的简单实现后，接下来围绕文章和标签两张表的crud进行操作。
+
+一：文章表的crud首先完善新增文章操作controller层仿照参考文档中的代码，为&#x2F;controller&#x2F;article&
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -670,13 +699,29 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/GoFrame/">
+                            <span class="chip bg-color">GoFrame</span>
+                        </a>
+                        
+                        <a href="/tags/Go/">
+                            <span class="chip bg-color">Go</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -698,6 +743,9 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                编写controller层参考官方示例项目的代码，例如登录操作：
+1234567func (c *ControllerV1) SignIn(ctx context.Context, req *v1.SignInReq) (res *v1.S
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -705,13 +753,29 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/GoFrame/">
+                            <span class="chip bg-color">GoFrame</span>
+                        </a>
+                        
+                        <a href="/tags/Go/">
+                            <span class="chip bg-color">Go</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -733,6 +797,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                引言:接着上一篇，这一篇记录个人实现博客小项目第二天的实战过程。
+
+二：编写代码输入gf gen dao，若数据库连接无误，则会根据连接数据库的表生成对应的go文件，例如：
+admin.go
+123456789101112131415161
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -740,13 +810,29 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/GoFrame/">
+                            <span class="chip bg-color">GoFrame</span>
+                        </a>
+                        
+                        <a href="/tags/Go/">
+                            <span class="chip bg-color">Go</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -768,6 +854,10 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                引言:在学习一段时间goLang之后，决定用个小项目巩固一下，于是在浏览后发现了一篇心仪的博客界面YinKai’s Blog | YinKai’s Blog
+框架：文档 | Hexo
+主题：https://github.com/aurora
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -775,13 +865,41 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/GoFrame/">
+                            <span class="chip bg-color">GoFrame</span>
+                        </a>
+                        
+                        <a href="/tags/Go/">
+                            <span class="chip bg-color">Go</span>
+                        </a>
+                        
+                        <a href="/tags/blog/">
+                            <span class="chip bg-color">blog</span>
+                        </a>
+                        
+                        <a href="/tags/hexo/">
+                            <span class="chip bg-color">hexo</span>
+                        </a>
+                        
+                        <a href="/tags/metry/">
+                            <span class="chip bg-color">metry</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -803,6 +921,9 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                解决因前后端端口号不同而造成的跨域问题
+123456789101112@Configurationpublic class CrosConfig implements WebMvcConfigurer &#123;    @Override
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -810,13 +931,33 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/vue3/">
+                            <span class="chip bg-color">vue3</span>
+                        </a>
+                        
+                        <a href="/tags/vite/">
+                            <span class="chip bg-color">vite</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">跨域问题</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -838,6 +979,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                
+学习vue3，使用create-vue搭建。学习使用Element plus简化流程
+
+参考文档:https://cn.vuejs.org/
+​        一个 Vue 3 UI 框架 | Element Plus (element-
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -845,13 +992,41 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/vue3/">
+                            <span class="chip bg-color">vue3</span>
+                        </a>
+                        
+                        <a href="/tags/ElementPlus/">
+                            <span class="chip bg-color">ElementPlus</span>
+                        </a>
+                        
+                        <a href="/tags/create-vue/">
+                            <span class="chip bg-color">create-vue</span>
+                        </a>
+                        
+                        <a href="/tags/excel%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/">
+                            <span class="chip bg-color">excel文件读取</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                            <span class="chip bg-color">前端</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -873,6 +1048,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                
+上传文件到阿里云oss
+
+yml文件中配置
+123456数据库名:  alioss:    endpoint:     access-key-id:     access-key-secret:     bucket-name: 
+
+在u
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -880,13 +1063,29 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/alioss/">
+                            <span class="chip bg-color">alioss</span>
+                        </a>
+                        
+                        <a href="/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/">
+                            <span class="chip bg-color">上传文件</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -908,6 +1107,17 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                
+打包项目
+在idea中用clean和install打包
+
+
+上传到虚拟机的&#x2F;root目录中，重命名为demo.jar,运行java -jar demo.jar &amp;命令，结果报错
+
+
+
+​		搜索后发现是linux中的jd
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -915,13 +1125,33 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/linux/">
+                            <span class="chip bg-color">linux</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%83%A8%E7%BD%B2jar%E5%8C%85/">
+                            <span class="chip bg-color">部署jar包</span>
+                        </a>
+                        
+                        <a href="/tags/supervisor/">
+                            <span class="chip bg-color">supervisor</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -943,6 +1173,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                
+配置事务管理，使用@Transaction注解配置，参考文档
+
+为读取操作设置缓存
+1234567891011121314@Configuration@Slf4jpublic class RedisConfiguration &#123;
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -950,13 +1186,41 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/springboot/">
+                            <span class="chip bg-color">springboot</span>
+                        </a>
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                        <a href="/tags/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">
+                            <span class="chip bg-color">事务管理</span>
+                        </a>
+                        
+                        <a href="/tags/redis/">
+                            <span class="chip bg-color">redis</span>
+                        </a>
+                        
+                        <a href="/tags/%E7%BC%93%E5%AD%98/">
+                            <span class="chip bg-color">缓存</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -978,6 +1242,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                
+完成其余功能的CRUD，完成后在接口文档中测试
+修改完善功能，完善数据校验
+为部分表添加乐观锁，同时在表中新增version字段
+
+12@Column(version = true)   private Integer version;
+
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -985,13 +1257,41 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/springboot/">
+                            <span class="chip bg-color">springboot</span>
+                        </a>
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                        <a href="/tags/%E4%B9%90%E8%A7%82%E9%94%81/">
+                            <span class="chip bg-color">乐观锁</span>
+                        </a>
+                        
+                        <a href="/tags/jwt/">
+                            <span class="chip bg-color">jwt</span>
+                        </a>
+                        
+                        <a href="/tags/argon2%E5%8A%A0%E5%AF%86/">
+                            <span class="chip bg-color">argon2加密</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -1013,6 +1313,15 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                
+添加@Slf4j,增加@Api注释方便后期功能接口调试
+
+为方法添加@ApiOperation
+
+控制器负责接收数据，检验数据，将数据传到service层，在service层处理数据。返回给控制器
+
+查询操作全部设置为分页查询，方便查询与
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
@@ -1020,13 +1329,45 @@
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                面筋鱼
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/springboot/">
+                            <span class="chip bg-color">springboot</span>
+                        </a>
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                        <a href="/tags/mybatis-flex/">
+                            <span class="chip bg-color">mybatis-flex</span>
+                        </a>
+                        
+                        <a href="/tags/mybatis/">
+                            <span class="chip bg-color">mybatis</span>
+                        </a>
+                        
+                        <a href="/tags/hutool/">
+                            <span class="chip bg-color">hutool</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                            <span class="chip bg-color">分页查询</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -1135,7 +1476,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

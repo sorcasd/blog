@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="GoFrame新手实战(一), Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="引言:在学习一段时间goLang之后，决定用个小项目巩固一下，于是在浏览后发现了一篇心仪的博客界面YinKai’s Blog | YinKai’s Blog
+框架：文档 | Hexo
+主题：https://github.com/aurora">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +350,41 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GoFrame/">
+                                <span class="chip bg-color">GoFrame</span>
+                            </a>
+                        
+                            <a href="/tags/Go/">
+                                <span class="chip bg-color">Go</span>
+                            </a>
+                        
+                            <a href="/tags/blog/">
+                                <span class="chip bg-color">blog</span>
+                            </a>
+                        
+                            <a href="/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
+                            </a>
+                        
+                            <a href="/tags/metry/">
+                                <span class="chip bg-color">metry</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                GoFrame学习笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +400,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2k
                 </div>
                 
 
@@ -398,7 +429,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="引言"><a href="#引言" class="headerlink" title="引言:"></a>引言:</h2><p>在学习一段时间goLang之后，决定用个小项目巩固一下，于是在浏览后发现了一篇心仪的博客界面<a target="_blank" rel="noopener" href="https://www.yinkai.cc/">YinKai’s Blog | YinKai’s Blog</a></p>
+<p>框架：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></p>
+<p>主题：<a target="_blank" rel="noopener" href="https://github.com/auroral-ui/hexo-theme-aurora">https://github.com/auroral-ui/hexo-theme-aurora</a></p>
+<p>定好目标后，就可以开始建项了</p>
+<hr>
+<h3 id="建项："><a href="#建项：" class="headerlink" title="建项："></a>建项：</h3><p><strong>版本参考</strong></p>
+<p>ide使用GoLand2024版本</p>
+<p>GoFrame使用V2版本</p>
+<p><strong>建表</strong></p>
+<p>不将用户数据存入数据库，重点关照文章与标签的存储，取消注册与登录，仅作于用nickname发表评论用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for admin</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `admin`;</span><br><span class="line">CREATE TABLE `admin`  (</span><br><span class="line">  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT &#x27;博客管理员&#x27;,</span><br><span class="line">  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT &#x27;密码&#x27;,</span><br><span class="line">  `create_time` datetime(0) NOT NULL COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `update_time` datetime(0) NOT NULL COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  `delete_time` datetime(0) NULL DEFAULT NULL COMMENT &#x27;删除时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`name`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for article</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `article`;</span><br><span class="line">CREATE TABLE `article`  (</span><br><span class="line">  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT &#x27;索引&#x27;,</span><br><span class="line">  `post_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT &#x27;文件名&#x27;,</span><br><span class="line">  `layout` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT &#x27;布局&#x27;,</span><br><span class="line">  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT &#x27;标题&#x27;,</span><br><span class="line">  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT &#x27;内容&#x27;,</span><br><span class="line">  `post` tinyint(1) NULL DEFAULT 0 COMMENT &#x27;是否推荐&#x27;,</span><br><span class="line">  `create_time` datetime(0) NOT NULL COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `update_time` datetime(0) NOT NULL COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  `delete_time` datetime(0) NULL DEFAULT NULL COMMENT &#x27;删除时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">-- ----------------------------</span><br><span class="line">-- Table structure for tags</span><br><span class="line">-- ----------------------------</span><br><span class="line">DROP TABLE IF EXISTS `tags`;</span><br><span class="line">CREATE TABLE `tags`  (</span><br><span class="line">  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT &#x27;索引&#x27;,</span><br><span class="line">  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT &#x27;标签名&#x27;,</span><br><span class="line">  `create_time` datetime(0) NOT NULL COMMENT &#x27;创建时间&#x27;,</span><br><span class="line">  `update_time` datetime(0) NOT NULL COMMENT &#x27;更新时间&#x27;,</span><br><span class="line">  `delete_time` datetime(0) NULL DEFAULT NULL COMMENT &#x27;删除时间&#x27;,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">SET FOREIGN_KEY_CHECKS = 1;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><p>在终端中输入<code>gf init demo-blog</code>初始化项目</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/4cc5a67ec8814abc89e3c02293f5e50c.png"></p>
+<p>创建完毕后结构如下:</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/6fa6071005ab48daaeaaae7dc0f1d31a.png"></p>
+<h4 id="goFrame目录结构"><a href="#goFrame目录结构" class="headerlink" title="goFrame目录结构"></a>goFrame目录结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">├── api</span><br><span class="line">├── hack</span><br><span class="line">├── internal</span><br><span class="line">│   ├── cmd</span><br><span class="line">│   ├── consts</span><br><span class="line">│   ├── controller</span><br><span class="line">│   ├── dao</span><br><span class="line">│   ├── logic</span><br><span class="line">│   ├── model</span><br><span class="line">│   |   ├── do</span><br><span class="line">│   │   └── entity</span><br><span class="line">│   └── service</span><br><span class="line">├── manifest</span><br><span class="line">├── resource</span><br><span class="line">├── utility</span><br><span class="line">├── go.mod</span><br><span class="line">└── main.go</span><br><span class="line">resource    静态资源   静态资源文件。这些文件往往可以通过 资源打包/镜像编译 的形式注入到发布文件中。</span><br><span class="line">manifest    交付清单   包含程序编译、部署、运行、配置的文件。常见内容如下：</span><br><span class="line">main.go 入口文件   程序入口文件。</span><br><span class="line">internal    内部逻辑   业务逻辑存放目录。通过Golang internal特性对外部隐藏可见性。</span><br><span class="line">hack    工具脚本   存放项目开发工具、脚本等内容。例如，CLI工具的配置，各种shell/bat脚本等文件。</span><br><span class="line">go.mod  依赖管理   使用Go Module包管理的依赖描述文件。</span><br><span class="line">api 对外接口   对外提供服务的输入/输出数据结构定义。考虑到版本管理需要，往往以api/xxx/v1...存在。</span><br><span class="line">- service   业务接口   用于业务模块解耦的接口定义层。具体的接口实现在logic中进行注入。</span><br><span class="line">- protobuf  协议文件   GRPC协议时使用的protobuf协议定义文件，协议文件编译后生成go文件到api目录。</span><br><span class="line">- model 结构模型   数据结构管理模块，管理数据实体对象，以及输入与输出数据结构定义。</span><br><span class="line">- logic 业务封装   业务逻辑封装管理，特定的业务逻辑实现和封装。往往是项目中最复杂的部分。</span><br><span class="line">  - entity  数据模型   数据模型是模型与数据集合的一对一关系，由工具维护，用户不能修改。</span><br><span class="line">- docker    镜像文件   Docker镜像相关依赖文件，脚本文件等等。</span><br><span class="line">  - do  领域对象   用于dao数据操作中业务模型与实例模型转换，由工具维护，用户不能修改。</span><br><span class="line">- deploy    部署文件   部署相关的文件。默认提供了Kubernetes集群化部署的Yaml模板，通过kustomize管理。</span><br><span class="line">- dao</span><br><span class="line"></span><br><span class="line">数据访问    数据访问对象，这是一层抽象对象，用于和底层数据库交互，仅包含最基础的 CURD 方法</span><br><span class="line">- controller    接口处理   接收/解析用户输入参数的入口/接口层。</span><br><span class="line">- consts</span><br><span class="line">  常量定义</span><br><span class="line"></span><br><span class="line">项目所有常量定义。</span><br><span class="line"></span><br><span class="line">- config    配置管理   配置文件存放目录。</span><br><span class="line">- cmd   入口指令   命令行管理目录。可以管理维护多个命令行。</span><br><span class="line">  对外接口</span><br><span class="line">  对外接口包含两部分：接口定义（api）+接口实现（controller）。</span><br><span class="line"></span><br><span class="line">服务接口的职责类似于三层架构设计中的UI表示层，负责接收并响应客户端的输入与输出，包括对输入参数的过滤、转换、校验，对输出数据结构的维护，并调用 service 实现业务逻辑处理。</span><br><span class="line"></span><br><span class="line">接口定义 - api</span><br><span class="line">api包用于与客户端约定的数据结构输入输出定义，往往与具体的业务场景强绑定。</span><br><span class="line"></span><br><span class="line">接口实现 - controller</span><br><span class="line">controller用于接收api的输入，可以直接在controller中实现业务逻辑，或者调用一个或多个service包实现业务逻辑，将执行结果封装为约定的api输出数据结构。</span><br><span class="line"></span><br><span class="line">业务实现</span><br><span class="line">业务实现包含两部分：业务接口（service）+业务封装（logic）。</span><br><span class="line"></span><br><span class="line">业务实现的职责类似于三层架构设计中的BLL业务逻辑层，负责具体业务逻辑的实现以及封装。</span><br><span class="line"></span><br><span class="line">在后续的章节介绍中，我们会将业务实现统一称作service，大家注意它其实包含两部分即可。</span><br><span class="line"></span><br><span class="line">业务接口 - service</span><br><span class="line">service包用于解耦业务模块之间的调用。业务模块之间往往不会直接调用对应的业务模块资源来实现业务逻辑，而是通过调用service接口。service层只有接口定义，具体的接口实现注入在各个业务模块中。</span><br><span class="line"></span><br><span class="line">业务封装 - logic</span><br><span class="line">logic包负责具体业务逻辑的实现以及封装。项目中各个层级代码不会直接调用logic层的业务模块，而是通过service接口层来调用。</span><br><span class="line"></span><br><span class="line">结构模型</span><br><span class="line">model包的职责类似于三层架构中的Model模型定义层。模型定义代码层中仅包含全局公开的数据结构定义，往往不包含方法定义。</span><br><span class="line"></span><br><span class="line">这里需要注意的是，这里的model不仅负责维护数据实体对象（entity）结构定义，也包括所有的输入/输出数据结构定义，被api/dao/service共同引用。这样做的好处除了可以统一管理公开的数据结构定义，也可以充分对同一业务领域的数据结构进行复用，减少代码冗余。</span><br><span class="line"></span><br><span class="line">数据模型 - entity</span><br><span class="line">与数据集合绑定的程序数据结构定义，通常和数据表一一对应。</span><br><span class="line"></span><br><span class="line">业务模型 - model</span><br><span class="line">与业务相关的通用数据结构定义，其中包含大部分的方法输入输出定义。</span><br><span class="line"></span><br><span class="line">数据访问 - dao</span><br><span class="line">dao包的职责类似于三层架构中的DAL数据访问层，数据访问层负责所有的数据访问收口。</span><br></pre></td></tr></table></figure>
+
+<p>参考自<a target="_blank" rel="noopener" href="https://goframe.org/pages/viewpage.action?pageId=1114119">官方文档</a></p>
+<h3 id="二：配置数据库"><a href="#二：配置数据库" class="headerlink" title="二：配置数据库"></a>二：配置数据库</h3><p>在hack包下编辑config.yaml文件</p>
+<p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">database:</span><br><span class="line">  default:</span><br><span class="line">    link: &quot;mysql:root:yujiawei@tcp(127.0.0.1:3306)/blog&quot;</span><br></pre></td></tr></table></figure>
+
+<p>GoFrame官方文档指示如下:</p>
+<p><code>type:username:password@protocol(address)[/dbname][?param1=value1&amp;...&amp;paramN=valueN]</code>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类型:账号:密码@协议(地址)/数据库名称?特性配置</span><br></pre></td></tr></table></figure>
+
+<p>测试无误后使用goframe提供的Cli工具生成代码</p>
+<p><code>gf gen dao</code>  </p>
+<p> 参考文档：<br> <a target="_blank" rel="noopener" href="https://goframe.org/pages/viewpage.action?pageId=3673173">数据规范-gen dao - GoFrame (ZH)-Latest - GoFrame官网 - 类似PHP-Laravel, Java-SpringBoot的Go企业级开发框架</a></p>
+<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/e09ad866d8386f1e052fcf637">GoFrame V2真香，我是Get到了高内聚低耦合的点，你呢？_Go_王中阳Go_InfoQ写作社区</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/goflyfox/gfstudy/tree/master/doc_basic">doc_basic · goflyfox&#x2F;gfstudy - 码云 - 开源中国 (gitee.com)</a></p>
+
                 
             </div>
             <hr/>
@@ -461,7 +524,27 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/GoFrame/">
+                                    <span class="chip bg-color">GoFrame</span>
+                                </a>
+                            
+                                <a href="/tags/Go/">
+                                    <span class="chip bg-color">Go</span>
+                                </a>
+                            
+                                <a href="/tags/blog/">
+                                    <span class="chip bg-color">blog</span>
+                                </a>
+                            
+                                <a href="/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
+                                </a>
+                            
+                                <a href="/tags/metry/">
+                                    <span class="chip bg-color">metry</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +913,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +966,31 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vue3/">
+                        <span class="chip bg-color">vue3</span>
+                    </a>
+                    
+                    <a href="/tags/vite/">
+                        <span class="chip bg-color">vite</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">跨域问题</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1183,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

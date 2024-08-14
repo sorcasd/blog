@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="GoFrame新手实战(四), Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="引言：在完成了对管理员登录功能的简单实现后，接下来围绕文章和标签两张表的crud进行操作。
+
+一：文章表的crud首先完善新增文章操作controller层仿照参考文档中的代码，为&amp;#x2F;controller&amp;#x2F;article&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +350,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GoFrame/">
+                                <span class="chip bg-color">GoFrame</span>
+                            </a>
+                        
+                            <a href="/tags/Go/">
+                                <span class="chip bg-color">Go</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                GoFrame学习笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +388,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.1k
                 </div>
                 
 
@@ -398,7 +417,61 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h4 id="引言："><a href="#引言：" class="headerlink" title="引言："></a>引言：</h4><p>在完成了对管理员登录功能的简单实现后，接下来围绕文章和标签两张表的crud进行操作。</p>
+<hr>
+<h3 id="一：文章表的crud"><a href="#一：文章表的crud" class="headerlink" title="一：文章表的crud"></a>一：文章表的crud</h3><h4 id="首先完善新增文章操作"><a href="#首先完善新增文章操作" class="headerlink" title="首先完善新增文章操作"></a>首先完善新增文章操作</h4><h5 id="controller层"><a href="#controller层" class="headerlink" title="controller层"></a>controller层</h5><p>仿照参考文档中的代码，为&#x2F;controller&#x2F;article&#x2F;article_v1_article_create.go编写代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func (c *ControllerV1) ArticleCreate(ctx context.Context, req *v1.ArticleCreateReq) (res *v1.ArticleCreateRes, err error) &#123;</span><br><span class="line">	err = service.Article().Create(ctx, model.ArticleCreateInput&#123;</span><br><span class="line">		Content:  req.Content,</span><br><span class="line">		Layout:   req.Layout,</span><br><span class="line">		PostName: req.PostName,</span><br><span class="line">		Tags:     req.Tags,</span><br><span class="line">		Title:    req.Title,</span><br><span class="line">		TagsId:   req.TagsId,</span><br><span class="line">	&#125;)</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>解决报红的三个地方，在model层中创建article.go,定义ArticleCreateInput结构体,目的是为了定义统一的入参结构，具体如何理解个人参考的是这篇文章<a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/e09ad866d8386f1e052fcf637">GoFrame V2真香，我是Get到了高内聚低耦合的点，你呢？_Go_王中阳Go_InfoQ写作社区</a></p>
+<p>ArticleCreateInput如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">type ArticleCreateInput struct &#123;</span><br><span class="line">	Content  string</span><br><span class="line">	Layout   string</span><br><span class="line">	PostName string</span><br><span class="line">	Tags     string</span><br><span class="line">	Title    string</span><br><span class="line">	Post     int</span><br><span class="line">	TagsId   string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>接下来因为要使用logic来生成service接口，所以先编写logic层的代码</p>
+<h5 id="logic层"><a href="#logic层" class="headerlink" title="logic层"></a>logic层</h5><p>在&#x2F;logic&#x2F;article下创建article.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> (</span><br><span class="line">	sArticle <span class="keyword">struct</span> &#123;</span><br><span class="line">	&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	service.RegisterArticle(New())</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">()</span></span> service.IArticle &#123; <span class="keyword">return</span> &amp;sArticle&#123;&#125; &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *sArticle)</span></span> Create(ctx context.Context, in model.ArticleCreateInput) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> in.Title == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> in.Content == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dao.Article.Transaction(ctx, <span class="function"><span class="keyword">func</span><span class="params">(ctx context.Context, tx gdb.TX)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">		_, err := dao.Article.Ctx(ctx).Data(do.Article&#123;</span><br><span class="line">			Content:  in.Content,</span><br><span class="line">			Layout:   in.Layout,</span><br><span class="line">			Post:     in.Post,</span><br><span class="line">			PostName: in.PostName,</span><br><span class="line">			TagsId:   in.TagsId,</span><br><span class="line">			Title:    in.Title,</span><br><span class="line">		&#125;).Insert()</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>由于我goLand配置了官方给的自动配置<a target="_blank" rel="noopener" href="https://goframe.org/pages/viewpage.action?pageId=49770772">模块规范-gen service - GoFrame (ZH)-Latest - GoFrame官网 - 类似PHP-Laravel, Java-SpringBoot的Go企业级开发框架</a></p>
+<p>因此编写完成后无需手动输入gf gen service。</p>
+<p>后来在测试前发现了数据库的create_time和update_time自己设置了不能为空，于是在插入语句中新增两句</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">         CreateTime: gtime.New(time.Now()),</span><br><span class="line">UpdateTime: gtime.New(time.Now()),</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="https://i-blog.csdnimg.cn/direct/07e11448f54f4b51aa93bac0fe9e9027.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑<img src="https://i-blog.csdnimg.cn/direct/58ba7f3093a14deaa4f5e026ef84d684.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>检查数据库，数据库中也成功插入数据</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/8194861272604a00a10d736407ba7c87.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>这样一个基本的新增操作就完成了</p>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>这里采用逻辑删除，也就是软删除，所以本质上也就是update。以deleteTime是否为空作为判断是否删除的标准.</p>
+<p>步骤和上面的操作一样</p>
+<h5 id="先检查api接口"><a href="#先检查api接口" class="headerlink" title="先检查api接口"></a>先检查api接口</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> v1</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/gogf/gf/v2/frame/g&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ArticleDeleteReq <span class="keyword">struct</span> &#123;</span><br><span class="line">	g.Meta <span class="string">`path:&quot;/article/delete&quot; tags:&quot;Article&quot; method:&quot;post&quot; summary:&quot;删除文章&quot;`</span></span><br><span class="line">	Id     <span class="type">int</span> <span class="string">`p:&quot;id&quot; v:&quot;required#文章ID不能为空&quot; dc:&quot;文章ID&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> ArticleDeleteRes <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h5 id="然后在controller对应的包下编写代码"><a href="#然后在controller对应的包下编写代码" class="headerlink" title="然后在controller对应的包下编写代码"></a>然后在controller对应的包下编写代码</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> article</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;demo-blog/internal/model&quot;</span></span><br><span class="line">	<span class="string">&quot;demo-blog/internal/service&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;demo-blog/api/article/v1&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *ControllerV1)</span></span> ArticleDelete(ctx context.Context, req *v1.ArticleDeleteReq) (res *v1.ArticleDeleteRes, err <span class="type">error</span>) &#123;</span><br><span class="line">	err = service.Article().Delete(ctx, model.ArticleDeleteInput&#123;</span><br><span class="line">		Id: req.Id,</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h5 id="在model层创建ArticleDeleteInput结构体"><a href="#在model层创建ArticleDeleteInput结构体" class="headerlink" title="在model层创建ArticleDeleteInput结构体"></a>在model层创建ArticleDeleteInput结构体</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> ArticleDeleteInput <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id <span class="type">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h5 id="最后在logic层的article-article-go中编写"><a href="#最后在logic层的article-article-go中编写" class="headerlink" title="最后在logic层的article&#x2F;article.go中编写"></a>最后在logic层的article&#x2F;article.go中编写</h5><p>Transaction是添加事务管理</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *sArticle)</span></span> Delete(ctx context.Context, in model.ArticleDeleteInput) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> dao.Article.Transaction(ctx, <span class="function"><span class="keyword">func</span><span class="params">(ctx context.Context, tx gdb.TX)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">		_, err := dao.Article.Ctx(ctx).Where(<span class="string">&quot;id&quot;</span>, in.Id).Update(do.Article&#123;</span><br><span class="line">			DeleteTime: gtime.New(time.Now()),<span class="comment">//为输入id对应的那条数据更新delete_time</span></span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>在之后的所有查询里，都要添加上判断delete_time是否为空的条件。比较麻烦，但是goframe有解决的方案：<a target="_blank" rel="noopener" href="https://goframe.org/pages/viewpage.action?pageId=1114139">ORM链式操作-时间维护 - GoFrame (ZH)-Latest - GoFrame官网 - 类似PHP-Laravel, Java-SpringBoot的Go企业级开发框架</a></p>
+<p>只不过只能在它的链式操作中使用，并且数据库要包含create_at，update_at，delete_at任意或多个字段时才启用。</p>
+<p>现在重新运行一下项目</p>
+<h5 id="测试接口"><a href="#测试接口" class="headerlink" title="测试接口"></a>测试接口</h5><p><img src="https://i-blog.csdnimg.cn/direct/2c63e4df0d6747cc813adc746b08c509.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>别忘了在业务层或控制层对输入的内容进行判断，确保输入数据符合要求。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/93eef86229434f86b622b64203c284dc.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>可以看到成功的为这条字段更新了删除时间，删除操作也完成了。</p>
+<h4 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h4><p>默认写分页查询。</p>
+<p>分页查询可参考官方文档<a target="_blank" rel="noopener" href="https://goframe.org/pages/viewpage.action?pageId=98984073">ORM查询-ScanAndCount - GoFrame (ZH)-Latest - GoFrame官网 - 类似PHP-Laravel, Java-SpringBoot的Go企业级开发框架</a></p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>api层用于处理接收的参数</p>
+<p>​    model层用于控制传入的数据标准</p>
+<p>​    controller层将得到的数据传入业务层</p>
+<p>​    logic层处理具体的业务逻辑</p>
+
                 
             </div>
             <hr/>
@@ -461,7 +534,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/GoFrame/">
+                                    <span class="chip bg-color">GoFrame</span>
+                                </a>
+                            
+                                <a href="/tags/Go/">
+                                    <span class="chip bg-color">Go</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +911,31 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                        <span class="chip bg-color">分页查询</span>
+                    </a>
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +968,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1181,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

@@ -5,7 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Badminton-m-s5, Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="
+完成其余功能的CRUD，完成后在接口文档中测试
+修改完善功能，完善数据校验
+为部分表添加乐观锁，同时在表中新增version字段
+
+12@Column(version = true)   private Integer version;
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +354,41 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/springboot/">
+                                <span class="chip bg-color">springboot</span>
+                            </a>
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%B9%90%E8%A7%82%E9%94%81/">
+                                <span class="chip bg-color">乐观锁</span>
+                            </a>
+                        
+                            <a href="/tags/jwt/">
+                                <span class="chip bg-color">jwt</span>
+                            </a>
+                        
+                            <a href="/tags/argon2%E5%8A%A0%E5%AF%86/">
+                                <span class="chip bg-color">argon2加密</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    193
                 </div>
                 
 
@@ -398,7 +433,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <ol>
+<li>完成其余功能的CRUD，完成后在接口文档中测试</li>
+<li>修改完善功能，完善数据校验</li>
+<li>为部分表添加乐观锁，同时在表中新增version字段</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Column(version = true)</span><br><span class="line">   private Integer version;</span><br></pre></td></tr></table></figure>
+
+<p>乐观锁：<a target="_blank" rel="noopener" href="https://mybatis-flex.com/zh/core/version.html">MyBatis-Flex 乐观锁 - MyBatis-Flex 官方网站</a></p>
+<ol start="4">
+<li><p>增加token和拦截器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; payLoad=new HashMap&lt;String,Object&gt;()&#123;</span><br><span class="line">            private static final long serialVersionUID = 1L;&#123;</span><br><span class="line">                put(&quot;adminId&quot;,admin1.getAdminId());</span><br><span class="line">                put(&quot;adminName&quot;,admin1.getAdminName());</span><br><span class="line">                put(&quot;adminPassword&quot;,admin1.getAdminPassword());</span><br><span class="line">                put(&quot;adminState&quot;,admin1.getAdminState());</span><br><span class="line">                put(&quot;roles&quot;,&quot;admin&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        String token= JWTUtil.createToken(payLoad,&quot;123&quot;.getBytes());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为密码加密</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);//Argon2加密</span><br><span class="line">               int memory = 65536; // 内存使用量，单位是KB</span><br><span class="line">               int parallelism = 2; // 并行度</span><br><span class="line">               int iterations = 3; // 迭代次数</span><br><span class="line">               String 		hash=argon2.hash(iterations,memory,parallelism,adminDto.getAdminPassword().toCharArray());</span><br><span class="line">               admin.setAdminPassword(hash);</span><br></pre></td></tr></table></figure></li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -461,7 +511,27 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/springboot/">
+                                    <span class="chip bg-color">springboot</span>
+                                </a>
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%B9%90%E8%A7%82%E9%94%81/">
+                                    <span class="chip bg-color">乐观锁</span>
+                                </a>
+                            
+                                <a href="/tags/jwt/">
+                                    <span class="chip bg-color">jwt</span>
+                                </a>
+                            
+                                <a href="/tags/argon2%E5%8A%A0%E5%AF%86/">
+                                    <span class="chip bg-color">argon2加密</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +900,39 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">事务管理</span>
+                    </a>
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%93%E5%AD%98/">
+                        <span class="chip bg-color">缓存</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +965,43 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/mybatis-flex/">
+                        <span class="chip bg-color">mybatis-flex</span>
+                    </a>
+                    
+                    <a href="/tags/mybatis/">
+                        <span class="chip bg-color">mybatis</span>
+                    </a>
+                    
+                    <a href="/tags/hutool/">
+                        <span class="chip bg-color">hutool</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
+                        <span class="chip bg-color">分页查询</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1194,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

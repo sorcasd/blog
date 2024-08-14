@@ -5,7 +5,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Badminton-m-s7, Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="
+打包项目
+在idea中用clean和install打包
+
+
+上传到虚拟机的&amp;#x2F;root目录中，重命名为demo.jar,运行java -jar demo.jar &amp;amp;命令，结果报错
+
+
+
+​		搜索后发现是linux中的jd">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +357,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%83%A8%E7%BD%B2jar%E5%8C%85/">
+                                <span class="chip bg-color">部署jar包</span>
+                            </a>
+                        
+                            <a href="/tags/supervisor/">
+                                <span class="chip bg-color">supervisor</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +399,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    211
                 </div>
                 
 
@@ -398,7 +428,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <ol>
+<li><p>打包项目</p>
+<p>在idea中用clean和install打包</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/1f7595c165f64fb29baed79ef092acbc.png"></p>
+</li>
+<li><p>上传到虚拟机的&#x2F;root目录中，重命名为demo.jar,运行<code>java -jar demo.jar &amp;</code>命令，结果报错</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/44c1b8d7f5184e4d960bbf81c4d4f5ca.png"></p>
+</li>
+</ol>
+<p>​		搜索后发现是linux中的jdk版本较低的原因，将jdk更新到<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_59539033/article/details/127650750">jdk17版本</a></p>
+<p>​		成功结果如图</p>
+<p>​		<img src="https://i-blog.csdnimg.cn/direct/9799610be10e41febe94d82e89ed521e.png"></p>
+<p>​		再次运行以上命令，成功部署项目，在关闭防火墙后，根据端口和虚拟机ip测试访问</p>
+<p>​		<img src="https://i-blog.csdnimg.cn/direct/2b959402f6064e2ca3a9fe824f8bb72c.png"></p>
+<p>成功</p>
+<ol start="3">
+<li><p>使用supervisor启动进程实现自动重启服务<a target="_blank" rel="noopener" href="https://blog.csdn.net/xjxy52o/article/details/132178791">教程</a></p>
+<pre><code>  完成了supervisor的配置后
+</code></pre>
+</li>
+</ol>
+<p>​		<img src="https://i-blog.csdnimg.cn/direct/ed4b39ea932b422982e3a3071a375aba.png"></p>
+<p>​		在使用kill进程测试后发现无法实现自动重启，再次百度。发现是true的问题，将autorestart&#x3D;true改为autorestart&#x3D;unexpected。更新并重启再测试，成功实现了自动重启功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[program:demo]</span><br><span class="line">command=//usr/lib/jdk17/jdk-17.0.11/bin/java -jar demo.jar &amp;</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=unexpected</span><br><span class="line">directory=/root</span><br><span class="line">user=root</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
                 
             </div>
             <hr/>
@@ -461,7 +518,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%83%A8%E7%BD%B2jar%E5%8C%85/">
+                                    <span class="chip bg-color">部署jar包</span>
+                                </a>
+                            
+                                <a href="/tags/supervisor/">
+                                    <span class="chip bg-color">supervisor</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +899,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/alioss/">
+                        <span class="chip bg-color">alioss</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/">
+                        <span class="chip bg-color">上传文件</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +952,39 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">
+                        <span class="chip bg-color">事务管理</span>
+                    </a>
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%93%E5%AD%98/">
+                        <span class="chip bg-color">缓存</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1177,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

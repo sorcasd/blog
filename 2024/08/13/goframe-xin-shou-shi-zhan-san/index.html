@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="GoFrame新手实战(三), Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="编写controller层参考官方示例项目的代码，例如登录操作：
+1234567func (c *ControllerV1) SignIn(ctx context.Context, req *v1.SignInReq) (res *v1.S">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +349,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/GoFrame/">
+                                <span class="chip bg-color">GoFrame</span>
+                            </a>
+                        
+                            <a href="/tags/Go/">
+                                <span class="chip bg-color">Go</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                GoFrame学习笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +387,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    610
                 </div>
                 
 
@@ -398,7 +416,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h4 id="编写controller层"><a href="#编写controller层" class="headerlink" title="编写controller层"></a>编写controller层</h4><p>参考官方示例项目的代码，例如登录操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func (c *ControllerV1) SignIn(ctx context.Context, req *v1.SignInReq) (res *v1.SignInRes, err error) &#123;</span><br><span class="line">	err = service.User().SignIn(ctx, model.UserSignInInput&#123;</span><br><span class="line">		Passport: req.Passport,</span><br><span class="line">		Password: req.Password,</span><br><span class="line">	&#125;)</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>仿照这个样式，在&#x2F;controller&#x2F;admin目录下创建admin_v1_sign_in.go文件。</p>
+<p>填入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func (c *ControllerV1) SignIn(ctx context.Context, req *v1.SignInReq) (res *v1.SignInRes, err error) &#123;</span><br><span class="line">	err = service.Admin().SignIn(ctx, model.AdminSignInInput&#123;</span><br><span class="line">		Name:     req.Name,</span><br><span class="line">		Password: req.Password,</span><br><span class="line">	&#125;)</span><br><span class="line">	return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>service爆红，由官方文档可知:</p>
+<p>可以按照一定的编码规范，从<code>logic</code>业务逻辑代码生成<code>service</code>接口定义代码。因此先编写logic层的代码。此时查看示例项目，发现logic下有除了user的功能代码外，还有三个包</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/6382bea9442d46059bc45e0586f714f1.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>由于不清楚具体作用，在项目中就不考虑添加，以实现基础功能为主。</p>
+<h4 id="实现logic层业务逻辑"><a href="#实现logic层业务逻辑" class="headerlink" title="实现logic层业务逻辑"></a>实现logic层业务逻辑</h4><p>创建&#x2F;logic&#x2F;admin&#x2F;admin.go</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func init() &#123;</span><br><span class="line">	service.RegisterAdmin(New())</span><br><span class="line">&#125;</span><br><span class="line">func New() service.IAdmin &#123; return &amp;sAdmin&#123;&#125; &#125;</span><br><span class="line">func (s *sAdmin) SignIn(ctx context.Context, in model.AdminSignInInput) (err error) &#123;</span><br><span class="line">	var admin *entity.Admin</span><br><span class="line">	err = dao.Admin.Ctx(ctx).Where(do.Admin&#123;</span><br><span class="line">		Name:     in.Name,</span><br><span class="line">		Password: in.Password,</span><br><span class="line">	&#125;).Scan(&amp;admin)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		return err</span><br><span class="line">	&#125;</span><br><span class="line">	if admin == nil &#123;</span><br><span class="line">		return gerror.New(`Passport or Password not correct`)</span><br><span class="line">	&#125;</span><br><span class="line">	return nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>model.AdminSignInInput会报错，因此需要在model目录下创建一个admin.go文件,定义这个结构体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package model</span><br><span class="line"></span><br><span class="line">type AdminSignInInput struct &#123;</span><br><span class="line">	Name     string</span><br><span class="line">	Password string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>全部编写完成后运行项目，为数据库添加admin数据，通过接口测试数据，发现报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. cannot find database driver for specified database type &quot;mysql&quot;, did you misspell type name &quot;mysql&quot; or forget importing the database driver? possible reference</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h4 id="解决连接数据库报错"><a href="#解决连接数据库报错" class="headerlink" title="解决连接数据库报错"></a>解决连接数据库报错</h4><p>首先怀疑的是config中的数据库配置问题，检查一遍发现配置没问题。想不出还有什么地方出问题，于是复制了问题描述给ai和百度。先按照通义灵码给出的排查方案检查，仍然报同样的错误，最后上百度一查，发现第一条就匹配到了官方文档的常见问题。</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/981e91a61af5494ba457e645ca860a8d.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
+<p>进入给出的地址，先安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/gogf/gf/contrib/drivers/mysql/v2</span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>然后在main.go中引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import _ &quot;github.com/gogf/gf/contrib/drivers/mysql/v2&quot;</span><br></pre></td></tr></table></figure>
+
+<p>再测试一下接口遍，问题解决。原来是没有映入社区驱动导致的。</p>
+<p>管理员的登录功能就算是告一段落，接下来开始编写其余功能。</p>
+
                 
             </div>
             <hr/>
@@ -461,7 +515,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/GoFrame/">
+                                    <span class="chip bg-color">GoFrame</span>
+                                </a>
+                            
+                                <a href="/tags/Go/">
+                                    <span class="chip bg-color">Go</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +892,27 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +945,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1158,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             

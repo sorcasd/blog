@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Badminton-m-s10, Hexo">
-    <meta name="description" content="">
+    <meta name="description" content="解决因前后端端口号不同而造成的跨域问题
+123456789101112@Configurationpublic class CrosConfig implements WebMvcConfigurer &amp;#123;    @Override">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -348,12 +349,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/vue3/">
+                                <span class="chip bg-color">vue3</span>
+                            </a>
+                        
+                            <a href="/tags/vite/">
+                                <span class="chip bg-color">vite</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+                                <span class="chip bg-color">跨域问题</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -369,14 +391,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    128
                 </div>
                 
 
@@ -398,7 +420,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>解决因前后端端口号不同而造成的跨域问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class CrosConfig implements WebMvcConfigurer &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void addCorsMappings(CorsRegistry registry) &#123;</span><br><span class="line">        registry.addMapping(&quot;/**&quot;)</span><br><span class="line">                .allowedOrigins(&quot;*&quot;)</span><br><span class="line">                .allowedMethods(&quot;GET&quot;,&quot;HEAD&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;OPTIONS&quot;,&quot;PUT&quot;)</span><br><span class="line">                .allowCredentials(true)</span><br><span class="line">                .maxAge(3600)</span><br><span class="line">                .allowedHeaders(&quot;*&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>文章参考来源于<a target="_blank" rel="noopener" href="https://blog.csdn.net/yi742891270/article/details/107933050">spring boot与VUE的前后端交互_vue和springboot的前后端交互-CSDN博客</a></p>
+<p>学习时出了官方文档，也参考了<a target="_blank" rel="noopener" href="http://t.csdnimg.cn/3GCJF">http://t.csdnimg.cn/3GCJF</a> 这个笔记</p>
+<p>目标实现简单的前后端交互。</p>
+
                 
             </div>
             <hr/>
@@ -461,7 +489,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/vue3/">
+                                    <span class="chip bg-color">vue3</span>
+                                </a>
+                            
+                                <a href="/tags/vite/">
+                                    <span class="chip bg-color">vite</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/">
+                                    <span class="chip bg-color">跨域问题</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -830,11 +870,39 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/GoFrame%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    GoFrame学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/GoFrame/">
+                        <span class="chip bg-color">GoFrame</span>
+                    </a>
+                    
+                    <a href="/tags/Go/">
+                        <span class="chip bg-color">Go</span>
+                    </a>
+                    
+                    <a href="/tags/blog/">
+                        <span class="chip bg-color">blog</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/metry/">
+                        <span class="chip bg-color">metry</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -867,11 +935,39 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            面筋鱼
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vue3/">
+                        <span class="chip bg-color">vue3</span>
+                    </a>
+                    
+                    <a href="/tags/ElementPlus/">
+                        <span class="chip bg-color">ElementPlus</span>
+                    </a>
+                    
+                    <a href="/tags/create-vue/">
+                        <span class="chip bg-color">create-vue</span>
+                    </a>
+                    
+                    <a href="/tags/excel%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/">
+                        <span class="chip bg-color">excel文件读取</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1064,7 +1160,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">9.4k</span>
             
             
             
