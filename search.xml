@@ -26,8 +26,6 @@
             
             <tag> 前后端联调 </tag>
             
-            <tag> Badminton </tag>
-            
             <tag> vue-router </tag>
             
             <tag> Typescript </tag>
@@ -204,15 +202,15 @@
       
         <tags>
             
+            <tag> badminton </tag>
+            
+            <tag> 后端 </tag>
+            
             <tag> vue3 </tag>
             
             <tag> vite </tag>
             
             <tag> 跨域问题 </tag>
-            
-            <tag> badminton </tag>
-            
-            <tag> 后端 </tag>
             
         </tags>
       
@@ -237,11 +235,11 @@
       
         <tags>
             
-            <tag> vue3 </tag>
-            
             <tag> badminton </tag>
             
             <tag> 后端 </tag>
+            
+            <tag> vue3 </tag>
             
             <tag> ElementPlus </tag>
             
@@ -420,9 +418,9 @@
             
             <tag> java </tag>
             
-            <tag> mybatis </tag>
-            
             <tag> mybatis-flex </tag>
+            
+            <tag> mybatis </tag>
             
             <tag> hutool </tag>
             
@@ -486,23 +484,23 @@
       
         <tags>
             
-            <tag> badminton </tag>
-            
-            <tag> 后端 </tag>
-            
             <tag> mysql </tag>
             
             <tag> navicat </tag>
             
             <tag> 数据库 </tag>
             
+            <tag> badminton </tag>
+            
+            <tag> 后端 </tag>
+            
             <tag> springboot </tag>
             
             <tag> java </tag>
             
-            <tag> mybatis </tag>
-            
             <tag> mybatis-flex </tag>
+            
+            <tag> mybatis </tag>
             
             <tag> orm </tag>
             
@@ -531,10 +529,6 @@
       
         <tags>
             
-            <tag> badminton </tag>
-            
-            <tag> 后端 </tag>
-            
             <tag> mysql </tag>
             
             <tag> sql </tag>
@@ -542,6 +536,10 @@
             <tag> navicat </tag>
             
             <tag> 数据库 </tag>
+            
+            <tag> badminton </tag>
+            
+            <tag> 后端 </tag>
             
         </tags>
       
