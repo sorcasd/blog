@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="vue3+vite+ts实现springboot项目前后端联调, Hexo">
-    <meta name="description" content="​引言：实现了基于springboot的球场预约管理系统的后端代码后，准备实现前端简单的登录和跳转功能。
+    <meta name="description" content="引言：实现了基于springboot的球场预约管理系统的后端代码后，准备实现前端简单的登录和跳转功能。
 一：创建前端项目使用create-vue官方脚手架搭建项目
 在终端输入
-npm create vue@latest命名项目名Badmi">
+npm create vue@latest命名项目名Badmin">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -442,13 +442,16 @@ npm create vue@latest命名项目名Badmi">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>​<br>引言：<br>实现了基于springboot的球场预约管理系统的后端代码后，准备实现前端简单的登录和跳转功能。</p>
+                <p>引言：<br>实现了基于springboot的球场预约管理系统的后端代码后，准备实现前端简单的登录和跳转功能。</p>
 <p>一：创建前端项目<br>使用create-vue官方脚手架搭建项目</p>
 <p>在终端输入</p>
 <p>npm create vue@latest<br>命名项目名Badminton-front-demo</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/4f613ae84410405fbd74c03db022b14c.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑</p>
 <p>创建好后,按照给出的命令一个个运行</p>
-<p>cd Badminton-front-demo<br>npm install<br>npm run dev</p>
+<p><code>cd Badminton-front-demo  </code></p>
+<p><code>npm install </code><br><code>npm run dev</code>  </p>
 <p>若担心路径输错或太长麻烦，可以用键盘上的tab键补全路径</p>
+<p><img src="https://i-blog.csdnimg.cn/direct/c57063bdf9524d3a8a5656dd902aa101.png"></p>
 <p>打开给出的网址 <a target="_blank" rel="noopener" href="http://localhost:5173/">http://localhost:5173/</a></p>
 <p>这里可以自己设置端口号和是否自动打开网址:在根目录下找到vite.config.ts更改，具体配置问题在这儿</p>
 <p>成功运行后的网页如下</p>
@@ -569,7 +572,7 @@ npm create vue@latest命名项目名Badmi">
   import { useRouter } from 'vue-router';
 import { reactive, ref } from 'vue'
 import axios from 'axios';
-  
+
   // do not use same name with ref
   const form = ref({
     adminName: '',
@@ -801,7 +804,7 @@ router.push({
 
   <script lang="ts" setup>
   import { ref } from 'vue'
-  
+
   const activeIndex = ref('1')
   const activeIndex2 = ref('1')
   const handleSelect = (key: string, keyPath: string[]) => {
@@ -844,7 +847,7 @@ router.push({
 
   <script lang="ts" setup>
   import { ref } from 'vue'
-  
+
   const activeIndex = ref('1')
   const activeIndex2 = ref('1')
   const handleSelect = (key: string, keyPath: string[]) => {
@@ -881,7 +884,7 @@ import { RouterLink, RouterView } from 'vue-router'
   import { useRouter } from 'vue-router';
 import { reactive, ref } from 'vue'
 import axios from 'axios';
-  
+
   // do not use same name with ref
   const form = ref({
     adminName: '',
@@ -977,7 +980,7 @@ axios.interceptors.request.use(function (config) {
 
 成功登录
 
-​
+
                 
             </div>
             <hr/>
@@ -1416,18 +1419,17 @@ axios.interceptors.request.use(function (config) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/08/19/front-backend-badminton/">
+                <a href="/2024/09/02/redis-start/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="vue3+vite+ts实现springboot项目前后端联调">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Redis启动服务操作">
                         
-                        <span class="card-title">vue3+vite+ts实现springboot项目前后端联调</span>
+                        <span class="card-title">Redis启动服务操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1437,55 +1439,26 @@ axios.interceptors.request.use(function (config) {
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-09-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%90%83%E5%9C%BA%E9%A2%84%E7%BA%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    球场预约管理系统后端开发
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vue3/">
-                        <span class="chip bg-color">vue3</span>
-                    </a>
-                    
-                    <a href="/tags/vite/">
-                        <span class="chip bg-color">vite</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83/">
-                        <span class="chip bg-color">前后端联调</span>
-                    </a>
-                    
-                    <a href="/tags/vue-router/">
-                        <span class="chip bg-color">vue-router</span>
-                    </a>
-                    
-                    <a href="/tags/Typescript/">
-                        <span class="chip bg-color">Typescript</span>
-                    </a>
-                    
-                    <a href="/tags/Element-plus/">
-                        <span class="chip bg-color">Element-plus</span>
-                    </a>
-                    
-                    <a href="/tags/Axios/">
-                        <span class="chip bg-color">Axios</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC/">
-                        <span class="chip bg-color">路由跳转</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
