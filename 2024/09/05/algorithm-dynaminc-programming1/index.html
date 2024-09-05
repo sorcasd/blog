@@ -4,14 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="球场预约管理系统后端开发(五), Hexo">
-    <meta name="description" content="
-完成其余功能的CRUD，完成后在接口文档中测试
-修改完善功能，完善数据校验
-为部分表添加乐观锁，同时在表中新增version字段
-
-12@Column(version = true)   private Integer version;
-">
+    <meta name="keywords" content="算法回顾之动态规划（一）, Hexo">
+    <meta name="description" content="动态规划（基础版）
+斐波那契数列爬楼梯:
+假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+示例 1：
+12345输入：n = 2输出：2解释：有两种方法可以爬到楼顶。1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>球场预约管理系统后端开发(五) | Hexo</title>
+    <title>算法回顾之动态规划（一） | Hexo</title>
     <link rel="icon" type="image/jpeg" href="https://sky-take-out-super-fish.oss-cn-beijing.aliyuncs.com/tuchuang/202408121433597.jpg">
     
     <style>
@@ -327,12 +326,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">球场预约管理系统后端开发(五)</h1>
+                    <h1 class="description center-align post-title">算法回顾之动态规划（一）</h1>
                 </div>
             </div>
         </div>
@@ -356,32 +355,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/badminton/">
-                                <span class="chip bg-color">badminton</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
-                            <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                <span class="chip bg-color">后端</span>
-                            </a>
-                        
-                            <a href="/tags/springboot/">
-                                <span class="chip bg-color">springboot</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%B9%90%E8%A7%82%E9%94%81/">
-                                <span class="chip bg-color">乐观锁</span>
-                            </a>
-                        
-                            <a href="/tags/jwt/">
-                                <span class="chip bg-color">jwt</span>
-                            </a>
-                        
-                            <a href="/tags/argon2%E5%8A%A0%E5%AF%86/">
-                                <span class="chip bg-color">argon2加密</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -392,8 +371,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%90%83%E5%9C%BA%E9%A2%84%E7%BA%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                球场预约管理系统后端开发
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -405,21 +384,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-08-13
+                    2024-09-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-08-19
+                    2024-09-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    193
+                    796
                 </div>
                 
 
@@ -441,21 +420,75 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li>完成其余功能的CRUD，完成后在接口文档中测试</li>
-<li>修改完善功能，完善数据校验</li>
-<li>为部分表添加乐观锁，同时在表中新增version字段</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Column(version = true)</span><br><span class="line">   private Integer version;</span><br></pre></td></tr></table></figure>
+                <h3 id="动态规划（基础版）"><a href="#动态规划（基础版）" class="headerlink" title="动态规划（基础版）"></a>动态规划（基础版）</h3><hr>
+<h4 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h4><p><strong>爬楼梯:</strong></p>
+<p>假设你正在爬楼梯。需要 <code>n</code> 阶你才能到达楼顶。</p>
+<p>每次你可以爬 <code>1</code> 或 <code>2</code> 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2</span><br><span class="line">输出：2</span><br><span class="line">解释：有两种方法可以爬到楼顶。</span><br><span class="line">1. 1 阶 + 1 阶</span><br><span class="line">2. 2 阶</span><br></pre></td></tr></table></figure>
 
-<p>乐观锁：<a target="_blank" rel="noopener" href="https://mybatis-flex.com/zh/core/version.html">MyBatis-Flex 乐观锁 - MyBatis-Flex 官方网站</a></p>
-<ol start="4">
-<li><p>增加token和拦截器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; payLoad=new HashMap&lt;String,Object&gt;()&#123;</span><br><span class="line">            private static final long serialVersionUID = 1L;&#123;</span><br><span class="line">                put(&quot;adminId&quot;,admin1.getAdminId());</span><br><span class="line">                put(&quot;adminName&quot;,admin1.getAdminName());</span><br><span class="line">                put(&quot;adminPassword&quot;,admin1.getAdminPassword());</span><br><span class="line">                put(&quot;adminState&quot;,admin1.getAdminState());</span><br><span class="line">                put(&quot;roles&quot;,&quot;admin&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        String token= JWTUtil.createToken(payLoad,&quot;123&quot;.getBytes());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为密码加密</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);//Argon2加密</span><br><span class="line">               int memory = 65536; // 内存使用量，单位是KB</span><br><span class="line">               int parallelism = 2; // 并行度</span><br><span class="line">               int iterations = 3; // 迭代次数</span><br><span class="line">               String 		hash=argon2.hash(iterations,memory,parallelism,adminDto.getAdminPassword().toCharArray());</span><br><span class="line">               admin.setAdminPassword(hash);</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：3</span><br><span class="line">解释：有三种方法可以爬到楼顶。</span><br><span class="line">1. 1 阶 + 1 阶 + 1 阶</span><br><span class="line">2. 1 阶 + 2 阶</span><br><span class="line">3. 2 阶 + 1 阶</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 45</code></li>
+</ul>
+<hr>
+<p><strong>由题</strong>可知此题的边界值为f(0),f(1)</p>
+<p>从第0阶到第0阶和从第0阶到第1阶只有一步，因此f(0)&#x3D;f(1)&#x3D;1.</p>
+<p>而我们用 f(x) 表示爬到第 x 级台阶的方案数，考虑最后一步可能跨了一级台阶，也可能跨了两级台阶，所以我们可以列出如下式子：</p>
+<p>f(x)&#x3D;f(x−1)+f(x−2)</p>
+<p>用滚动数组来解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int climbStairs(int n) &#123;</span><br><span class="line">        int p = 0, q = 0, r = 1;</span><br><span class="line">        for (int i = 1; i &lt;= n; ++i) &#123;</span><br><span class="line">            p = q; </span><br><span class="line">            q = r; </span><br><span class="line">            r = p + q;</span><br><span class="line">        &#125;</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>斐波那契数列:</strong></p>
+<p><strong>斐波那契数</strong> （通常用 <code>F(n)</code> 表示）形成的序列称为 <strong>斐波那契数列</strong> 。该数列由 <code>0</code> 和 <code>1</code> 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F(0) = 0，F(1) = 1</span><br><span class="line">F(n) = F(n - 1) + F(n - 2)，其中 n &gt; 1</span><br></pre></td></tr></table></figure>
+
+<p>给定 <code>n</code> ，请计算 <code>F(n)</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 2</span><br><span class="line">输出：1</span><br><span class="line">解释：F(2) = F(1) + F(0) = 1 + 0 = 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：2</span><br><span class="line">解释：F(3) = F(2) + F(1) = 1 + 1 = 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 4</span><br><span class="line">输出：3</span><br><span class="line">解释：F(4) = F(3) + F(2) = 2 + 1 = 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= n &lt;= 30</code></li>
+</ul>
+<hr>
+<p>和上一题类似，不同的是n从2开始，边界值题目中也已提出，f(0)&#x3D;0,f(1)&#x3D;1</p>
+<p>因此有所修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int fib(int n) &#123;</span><br><span class="line">        if(n==0)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int p=0,q=0,r=1;</span><br><span class="line">        for(int i=2;i&lt;=n;i++)&#123;</span><br><span class="line">            p=q;</span><br><span class="line">            q=r;</span><br><span class="line">            r=p+q;</span><br><span class="line">        &#125;</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>额外处理n为0，1的情况</p>
+<hr>
+<p><strong>第N个泰波那契数</strong></p>
+<p>泰波那契序列 Tn 定义如下： </p>
+<p>T0 &#x3D; 0, T1 &#x3D; 1, T2 &#x3D; 1, 且在 n &gt;&#x3D; 0 的条件下 Tn+3 &#x3D; Tn + Tn+1 + Tn+2</p>
+<p>给你整数 <code>n</code>，请返回第 n 个泰波那契数 Tn 的值。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 4</span><br><span class="line">输出：4</span><br><span class="line">解释：</span><br><span class="line">T_3 = 0 + 1 + 1 = 2</span><br><span class="line">T_4 = 1 + 1 + 2 = 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 25</span><br><span class="line">输出：1389537</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= n &lt;= 37</code></li>
+<li>答案保证是一个 32 位整数，即 <code>answer &lt;= 2^31 - 1</code>。</li>
+</ul>
+<p>同样是斐波那契数列题目的变种，不同的是Tn变为了Tn+3&#x3D;Tn+Tn+1+Tn+2</p>
+<p>而T0&#x3D;0,T1&#x3D;1,T2&#x3D;1;因此只需新增一个滚动数组的变量，将循环中的i初始值改为3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int tribonacci(int n) &#123;</span><br><span class="line">        int a,b,c,r;</span><br><span class="line">        a=0;</span><br><span class="line">        b=0;</span><br><span class="line">        c=1;</span><br><span class="line">        r=1;</span><br><span class="line">        if(n==0)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;else if(n==1||n==2)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=3;i&lt;=n;i++)&#123;</span><br><span class="line">            a=b;</span><br><span class="line">            b=c;</span><br><span class="line">            c=r;</span><br><span class="line">            r=a+b+c;</span><br><span class="line">        &#125;</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
                 
             </div>
@@ -482,7 +515,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sorcasd.github.io/2024/08/13/badminton-m-s5/">https://sorcasd.github.io/2024/08/13/badminton-m-s5/</a>
+                    <a href="https://sorcasd.github.io/2024/09/05/algorithm-dynaminc-programming1/">https://sorcasd.github.io/2024/09/05/algorithm-dynaminc-programming1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -520,32 +553,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/badminton/">
-                                    <span class="chip bg-color">badminton</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
                                 </a>
                             
-                                <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                    <span class="chip bg-color">后端</span>
-                                </a>
-                            
-                                <a href="/tags/springboot/">
-                                    <span class="chip bg-color">springboot</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%B9%90%E8%A7%82%E9%94%81/">
-                                    <span class="chip bg-color">乐观锁</span>
-                                </a>
-                            
-                                <a href="/tags/jwt/">
-                                    <span class="chip bg-color">jwt</span>
-                                </a>
-                            
-                                <a href="/tags/argon2%E5%8A%A0%E5%AF%86/">
-                                    <span class="chip bg-color">argon2加密</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -891,17 +904,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/08/13/badminton-m-s6/">
+                <a href="/2024/09/05/algorithm-dynaminc-programming1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="球场预约管理系统后端开发(六)">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="算法回顾之动态规划（一）">
                         
-                        <span class="card-title">球场预约管理系统后端开发(六)</span>
+                        <span class="card-title">算法回顾之动态规划（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -911,50 +925,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-08-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%90%83%E5%9C%BA%E9%A2%84%E7%BA%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    球场预约管理系统后端开发
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/badminton/">
-                        <span class="chip bg-color">badminton</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
-                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">后端</span>
-                    </a>
-                    
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
-                    </a>
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">
-                        <span class="chip bg-color">事务管理</span>
-                    </a>
-                    
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%93%E5%AD%98/">
-                        <span class="chip bg-color">缓存</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
@@ -968,13 +963,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/08/13/badminton-m-s4/">
+                <a href="/2024/09/02/redis-start/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="球场预约管理系统后端开发(四)">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Redis启动服务操作">
                         
-                        <span class="card-title">球场预约管理系统后端开发(四)</span>
+                        <span class="card-title">Redis启动服务操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -985,14 +980,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-08-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%90%83%E5%9C%BA%E9%A2%84%E7%BA%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
-                                    球场预约管理系统后端开发
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
                                 </a>
                             
                             
@@ -1002,36 +997,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/badminton/">
-                        <span class="chip bg-color">badminton</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">后端</span>
-                    </a>
-                    
-                    <a href="/tags/springboot/">
-                        <span class="chip bg-color">springboot</span>
-                    </a>
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/mybatis/">
-                        <span class="chip bg-color">mybatis</span>
-                    </a>
-                    
-                    <a href="/tags/mybatis-flex/">
-                        <span class="chip bg-color">mybatis-flex</span>
-                    </a>
-                    
-                    <a href="/tags/hutool/">
-                        <span class="chip bg-color">hutool</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">
-                        <span class="chip bg-color">分页查询</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
